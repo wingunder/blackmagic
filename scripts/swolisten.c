@@ -227,7 +227,7 @@ void _protocolPump(uint8_t *c)
     {
       // -----------------------------------------------------
     case ITM_IDLE:
-      if (*c==0b01110000)
+      if (*c==0x70)
 	{
 	  /* This is an overflow packet */
 	  if (options.verbose)
@@ -442,7 +442,7 @@ int usbFeeder(void)
 	{
 	  unsigned char *c=cbw;
           if (options.dump)
-              printf(cbw);
+              printf((char*)cbw);
           else
               while (size--)
                   _protocolPump(c++);
